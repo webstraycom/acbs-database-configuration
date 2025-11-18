@@ -1,4 +1,4 @@
-![Database Configuration Image](https://i.ibb.co/5g9fXRdh/readme-image.png)
+![Database Configuration Image](https://i.ibb.co/VWSqNzHZ/readme-image.png)
 ## About
 
 This repository contains information about deploying the `acbs-database` (backend and frontend) on a server.
