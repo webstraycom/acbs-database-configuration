@@ -1,4 +1,4 @@
-![Database Configuration Image](https://api.webstray.com/user/webstraycom/repository/acbs-database-configuration?customTitle=Database%20Configuration&sharpProgress=true&borderRadius=40)
+![Database Configuration Preview](https://api.webstray.com/starlight/user/webstraycom/repository/acbs-database-configuration?customTitle=Database%20Configuration&sharpProgress=true&borderRadius=40)
 ## About
 
 This repository contains information about deploying the `acbs-database` (backend and frontend) on a server.
