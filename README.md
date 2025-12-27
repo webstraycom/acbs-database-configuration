@@ -124,7 +124,7 @@ To install `Certbot` and issue certificates, follow these steps:
 2. **Start** the certificate issuance process with the following command:
 
 ```cmd
-certbot certonly --webroot
+certbot certonly --webroot -w C:\Certbot\webroot
 ```
 
 Then enter the names of the domains for which you want to issue an **SSL** certificate, separated by commas or spaces:
@@ -133,7 +133,30 @@ Then enter the names of the domains for which you want to issue an **SSL** certi
 example.com, api.example.com
 ```
 
-Wait for the SSL certificates to be issued, and then modify the **nginx** configuration files for the domains by adding another `server` block to listen for requests on port **443**.
+Wait for the SSL certificates to be issued, and then configure `nginx` to automatically restart when certificates are renewed. 
+
+You can do this by adding the following line to the `Certbot` certificate renewal configuration file (for example, the file is located in `C:\Certbot\renewal\example.com.conf`):
+
+```
+[renewalparams]
+deploy_hook = C:\nginx\nginx.exe -s reload
+```
+
+Repeat this for all files in the `renewal` folder.
+
+To ensure all redirects and paths are configured correctly, use the following command. It doesn't issue actual certificates or consume any limits:
+
+```powershell
+certbot renew --dry-run
+```
+
+To actually update the certificates (which is done automatically by the Windows Task Scheduler), use the following command:
+
+```powershell
+certbot renew
+```
+
+Then modify the **nginx** configuration files for the domains by adding another `server` block to listen for requests on port **443**.
 
 For example, for the domain `api.example.com`, another `server` block should look like this:
 
